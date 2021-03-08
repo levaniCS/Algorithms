@@ -19,7 +19,8 @@ function binarySearch(arr, elem) {
   return -1;
 }
 
-
+//! TIME COMPLEXITY  Log(n)
+//  It only works on "SORTED" array
 // Refactored Version
 function binarySearch(arr, elem) {
   var start = 0;
