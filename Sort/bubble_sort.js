@@ -2,6 +2,9 @@
 //  Time complexity
 //        General: O(N^2)
 //        Nearly sorted array: O(N) (The best case)
+
+// We swapping over over and over again untill
+// Biggest element bubbles at the end
 function bubbleSort(arr){
   let noSwaps;
   for(let i = arr.length; i > 0; i--){
