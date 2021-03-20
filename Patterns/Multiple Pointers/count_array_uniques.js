@@ -9,14 +9,13 @@ function countUniqueValues(arr){
     }
     return i + 1;
 }
-countUniqueValues([1,2,2,5,7,7,99])
+console.log(countUniqueValues([1,2,2,5,7,7,99]))
 
 
 // my solution
 function countUniqueValues(arr) {
     if(arr.length === 0) return 0;
    
-
     let left = 0;
     let innerLeft = 1;
 
@@ -24,7 +23,6 @@ function countUniqueValues(arr) {
         if(arr[left] === arr[innerLeft]) {
            ++innerLeft;
         } else {
-             
             ++left;
             arr[left] = arr[innerLeft];
             ++innerLeft;

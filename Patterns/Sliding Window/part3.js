@@ -7,13 +7,14 @@ function maxSubarraySum(arr, num){
   }
   tempSum = maxSum;
   for (let i = num; i < arr.length; i++) {
+    // წინა გამოაკელი და მიმდინარე დაუმატე
     tempSum = tempSum - arr[i - num] + arr[i];
     maxSum = Math.max(maxSum, tempSum);
   }
   return maxSum;
 }
 
-maxSubarraySum([2,6,9,2,1,8,5,6,3],3)
+maxSubarraySum([2,6,29,,1,8,5,6,3],3)
 
 
 function minSubArrayLen(nums, sum) {

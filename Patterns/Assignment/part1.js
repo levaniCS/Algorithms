@@ -1,4 +1,7 @@
-// sameFrequency Solution
+// მიზანი: დავადგინოთ ორი სტრინგი ერთიდაიგივე ასოებისგან შედგება თუ არა )
+// პროცესი: ვითვლით რამდენჯერ მეორდება თითოეულში კონკრეტული ასო ( Char ) და ვადარებთ
+// თითოეულ ქიზე ასოების რაოდენობა უნდა იყოს თანაბარი
+
 function sameFrequency(num1, num2){
   let strNum1 = num1.toString();
   let strNum2 = num2.toString();
@@ -6,6 +9,7 @@ function sameFrequency(num1, num2){
   
   let countNum1 = {};
   let countNum2 = {};
+  // ამირანი = { 'ა': 2, 'მ': 1, 'ი': 2, 'რ': 1, 'ნ': 1 }
   
   for(let i = 0; i < strNum1.length; i++){
     countNum1[strNum1[i]] = (countNum1[strNum1[i]] || 0) + 1
@@ -24,6 +28,7 @@ function sameFrequency(num1, num2){
 
 
 // areThereDuplicates Solution (Frequency Counter)
+// დაითვალა გამეორებები და თუ 1ზე მეტია ესეიგი დუბლირებულია
 function areThereDuplicates() {
   let collection = {}
   for(let val in arguments){
@@ -37,6 +42,7 @@ function areThereDuplicates() {
 
 
 // areThereDuplicates Solution (Multiple Pointers)
+// დასორტა ერეი ზრდადობით და ყოველი შემდგომი შეადარა ერთმანეთს, თუ ტოლია ე.ი დუბლირებული არსებობს
 function areThereDuplicates(...args) {
   // Two pointers
   args.sort((a,b) => a > b);
@@ -54,6 +60,8 @@ function areThereDuplicates(...args) {
 
 
 // areThereDuplicates One Liner Solution
+// თუ სეტში ჩაყრილის საიზი და საწყისის განსხვავებულია . 
+// ე.ი სეტში მოხდა დუბლირებულის მოცილება და მიმდინარე ერეიში არსებობს დუბლირებულები
 function areThereDuplicates() {
   return new Set(arguments).size !== arguments.length;
 }

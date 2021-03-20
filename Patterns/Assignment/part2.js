@@ -16,21 +16,14 @@ averagePair([1,3,3,5,6,7,10,12,19], 8)
 
 
 function isSubsequence(targetStr, str2) {
-
   if(!targetStr || !str2 || targetStr.length > str2.length) return false
-
   let tarPointer = 0;
   let str2Pointer = 0;
 
   while(str2Pointer < str2.length) {
-          
-      if(targetStr[tarPointer] === str2[str2Pointer]) {
-          ++tarPointer;
-      }
-
-      if(tarPointer === targetStr.length) return true
-      
-      ++str2Pointer;
+    if(targetStr[tarPointer] === str2[str2Pointer]) ++tarPointer;
+    if(tarPointer === targetStr.length) return true  
+    ++str2Pointer;
   }
 
   return false;
