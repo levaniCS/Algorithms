@@ -26,18 +26,93 @@ class Graph {
     }
     delete this.adjacencyList[v]
   }
+
+  depthFirstRecursive(start) {
+    const result = []
+    const visited = {}
+    const adjacencyListClone = this.adjacencyList
+
+    function dfs(vertex) {
+      if(!vertex) return null
+      visited[vertex] = true;
+      result.push(vertex)
+      adjacencyListClone[vertex].forEach(neighbour => {
+        // If neighbour is not visited
+        if(!visited[neighbour]) dfs(neighbour)
+      })
+    }
+    dfs(start)
+    return result;
+  }
+
+  depthFirstIterative(start) {
+    const stack = [start]
+    const result = []
+    const visited = {}
+    let currentVertex;
+
+    visited[start] = true
+    while(stack.length) {
+      currentVertex = stack.pop()
+      result.push(currentVertex)
+
+      this.adjacencyList[currentVertex].forEach(neighbour => {
+        if(!visited[neighbour]) {
+          visited[neighbour] = true
+          stack.push(neighbour)
+        }
+      })
+    }
+
+    return result
+  }
+
+  breadFirst(start) {
+    const queue = [start]
+    const result = []
+    const visited = {}
+    let currentVertex
+
+    visited[start] = true
+    while(queue.length) {
+      currentVertex = queue.shift()
+      result.push(currentVertex)
+
+      this.adjacencyList[currentVertex].forEach(neighbour => {
+        if(!visited[neighbour]) {
+          visited[neighbour] = true
+          queue.push(neighbour)
+        }
+      })
+    }
+
+    return result
+  }
 }
 
 
 const g = new Graph()
 
-g.addVertex('Dallas')
-g.addVertex('Tokyo')
-g.addVertex('Aspen')
+g.addVertex('A')
+g.addVertex('B')
+g.addVertex('C')
+g.addVertex('D')
+g.addVertex('E')
+g.addVertex('F')
 
-g.addEdge('Dallas', 'Tokyo')
-g.addEdge('Dallas', 'Tokyo')
-g.addEdge('Aspen', 'Tokyo')
+g.addEdge('A', 'B')
+g.addEdge('A', 'C')
+g.addEdge('B', 'D')
+g.addEdge('C', 'E')
+g.addEdge('D', 'E')
+g.addEdge('D', 'F')
+g.addEdge('E', 'F')
+//          A
+//        /   \
+//       B     C
+//       |     |
+//       D --- E
+//        \   /
+//          F
 
-g.removeVertex("Dallas")
-console.log(g)
+console.log(g.breadFirst("A"))
